@@ -1,38 +1,58 @@
 
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  const navigate = useNavigate();
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100">
-      <div className="text-center max-w-3xl px-6">
-        <h1 className="text-4xl font-bold mb-4 text-blue-900">ExchBuilder</h1>
-        <p className="text-xl text-blue-700 mb-8">
-          Create your own cryptocurrency exchange service with minimal effort
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-exchange-darkblue to-exchange-black">
+      <div className="container px-4 py-16 space-y-12 text-center">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-exchange-lightblue to-blue-300 text-transparent bg-clip-text">
+          Exchange Canvas Builder
+        </h1>
+        <p className="text-xl md:text-2xl text-exchange-lightgray max-w-3xl mx-auto">
+          Build your own cryptocurrency exchange website with our easy-to-use platform.
+          Customize templates, add widgets, and deploy your site in minutes.
         </p>
-        <p className="text-gray-700 mb-8">
-          Easily customize and deploy your exchange website using the exch.net API. 
-          No coding skills required.
-        </p>
-        
-        <div className="flex flex-col md:flex-row gap-4 justify-center">
-          <Button 
-            className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 text-lg"
-            onClick={() => navigate("/admin")}
-          >
-            Admin Panel
+        <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
+          <Button asChild size="lg" className="bg-exchange-blue hover:bg-exchange-lightblue text-white px-8 py-6 text-lg">
+            <Link to="/admin">
+              Launch Admin Panel
+            </Link>
           </Button>
-          <Button 
-            className="bg-blue-200 hover:bg-blue-300 text-blue-800 py-2 px-6 text-lg"
-            variant="outline"
-            onClick={() => navigate("/preview")}
-          >
-            Preview Site
+          <Button asChild variant="outline" size="lg" className="border-exchange-lightgray text-exchange-lightgray hover:bg-exchange-gray px-8 py-6 text-lg">
+            <Link to="/preview">
+              View Demo Site
+            </Link>
           </Button>
         </div>
       </div>
+      
+      <div className="container mt-12 px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-exchange-gray bg-opacity-50 p-6 rounded-lg">
+            <h3 className="text-2xl font-bold text-exchange-lightblue mb-4">Drag & Drop Builder</h3>
+            <p className="text-exchange-lightgray">
+              Easily position exchange widgets, menus, and forms on your website with our intuitive drag-and-drop interface.
+            </p>
+          </div>
+          <div className="bg-exchange-gray bg-opacity-50 p-6 rounded-lg">
+            <h3 className="text-2xl font-bold text-exchange-lightblue mb-4">Customizable Templates</h3>
+            <p className="text-exchange-lightgray">
+              Choose from pre-designed templates or upload your own HTML. Supports both JavaScript and non-JavaScript versions.
+            </p>
+          </div>
+          <div className="bg-exchange-gray bg-opacity-50 p-6 rounded-lg">
+            <h3 className="text-2xl font-bold text-exchange-lightblue mb-4">API Integration</h3>
+            <p className="text-exchange-lightgray">
+              Connect with exch.net API to display real-time exchange rates and process transactions securely.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer className="w-full py-6 mt-12 text-center text-exchange-lightgray">
+        <p>Exchange Canvas Builder &copy; 2025</p>
+      </footer>
     </div>
   );
 };

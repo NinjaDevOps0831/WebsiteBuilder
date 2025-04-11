@@ -4,30 +4,34 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CanvasProvider } from "./context/CanvasContext";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 import AdminPanel from "./pages/AdminPanel";
-import Preview from "./pages/Preview";
-import { BuilderProvider } from "./contexts/BuilderContext";
+import PreviewSite from "./pages/PreviewSite";
+import NotFound from "./pages/NotFound";
+
+// // Create a new component for dynamic page previews
+// import DynamicPage from "./pages/DynamicPage";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <BuilderProvider>
-      <TooltipProvider>
+    <TooltipProvider>
+      <CanvasProvider>
         <Toaster />
         <Sonner />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/preview" element={<Preview />} />
+            <Route path="/admin/*" element={<AdminPanel />} />
+            <Route path="/preview" element={<PreviewSite />} />
+            {/* <Route path="/preview/*" element={<DynamicPage />} /> */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
-      </TooltipProvider>
-    </BuilderProvider>
+      </CanvasProvider>
+    </TooltipProvider>
   </QueryClientProvider>
 );
 
